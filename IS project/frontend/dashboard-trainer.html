@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Trainer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Royal <span>Fitness</span></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <ul class="navbar">
+            <li><a href="index.html">Acasă</a></li>
+            <li><a href="#clients">Clienții Mei</a></li>
+            <li><a href="#plans">Planuri de Antrenament</a></li>
+            <li><a href="#profile">Profil</a></li>
+        </ul>
+        <div class="top-btn">
+            <a href="/signup-login" class="nav-btn">Delogare</a>
+        </div>
+    </header>
+
+    <section class="dashboard" id="clients">
+        <h2 class="heading">Clienții<span>Mei</span></h2>
+        <div class="content">
+            <ul>
+                <li>Maria Popescu - Antrenament: 10.12.2025</li>
+                <li>Andrei Ion - HIIT: 15.12.2025</li>
+            </ul>
+            <a href="#" class="btn">Adaugă Client</a>
+        </div>
+    </section>
+
+    <section class="dashboard" id="plans">
+        <h2 class="heading">Planuri de<span>Antrenament</span></h2>
+        <div class="content">
+            <p>Personalizează planurile pentru clienții tăi.</p>
+            <a href="#" class="btn">Creează Plan Nou</a>
+        </div>
+    </section>
+
+    <section class="dashboard" id="profile">
+        <h2 class="heading">Profilul<span>Meu</span></h2>
+        <div class="content">
+            <p>Nume: <strong>{{ user['username'] }}</strong></p>
+            <p>Email: <strong>{{ user['email'] }}</strong></p>
+            <a href="#" class="btn">Editează profilul</a>
+        </div>
+    </section>
+    
+
+    <footer class="footer">
+        <div class="social">
+            <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+        </div>
+        <p>&copy; Royal Fitness 2025 - All Rights Reserved</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

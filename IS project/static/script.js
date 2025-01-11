@@ -54,6 +54,7 @@ async function registerUser() {
     const email = document.querySelector('#signup-form input[placeholder="Adresa de email"]').value;
     const password = document.querySelector('#signup-form input[placeholder="Parola"]').value;
     const confirmPassword = document.querySelector('#signup-form input[placeholder="Confirmă parola"]').value;
+    const role=document.querySelector('#signup-form input[placeholder="Client/Trainer"]').value;
 
     if (password !== confirmPassword) {
         alert('Parolele nu se potrivesc!');
@@ -63,7 +64,7 @@ async function registerUser() {
     const response = await fetch('/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password, role: 'Client' }),
+        body: JSON.stringify({ username, email, password, role }),
     });
 
     const data = await response.json();
@@ -75,3 +76,42 @@ async function registerUser() {
     }
 }
 
+async function addClient() {
+    const clientEmail = prompt("Introduceți emailul clientului:");
+    if (!clientEmail) return;
+
+    const response = await fetch('/add-client', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ client_email: clientEmail })
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+        alert("Client adăugat cu succes!");
+        window.location.reload();
+    } else {
+        alert(data.error);
+    }
+}
+
+async function createTrainingPlan() {
+    const clientId = prompt("Introduceți ID-ul clientului:");
+    const planDetails = prompt("Introduceți detaliile planului:");
+
+    if (!clientId || !planDetails) return;
+
+    const response = await fetch('/create-plan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ client_id: clientId, plan_details: planDetails })
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+        alert("Plan de antrenament creat!");
+        window.location.reload();
+    } else {
+        alert(data.error);
+    }
+}
