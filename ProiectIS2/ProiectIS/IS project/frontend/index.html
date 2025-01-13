@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Royal Fitness</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <a href="#home" class="logo">Royal <span>Fitness</span></a>
+        <div class='bx bx-menu' id="menu-icon"></div>
+        <ul class="navbar">
+            <li><a href="#home">Acasă</a></li>
+            <li><a href="#services">Servicii</a></li>
+            <li><a href="#about">Despre Noi</a></li>
+            <li><a href="#plans">Prețuri</a></li>
+            <li><a href="#review">Recenzii</a></li>
+        </ul>
+        <div class="top-btn">
+            <a href="/signup-login" class="btn">Alatura-te noua</a>
+        </div>
+
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Construieste-ti</h3>
+            <h1>Corpul la care visezi</h1>
+            <h3><span class="multiple-text">Bodybuilding</span></h3>
+
+            <p>Transformă-ți visul în realitate la Royal Fitness, unde rezultatele vorbesc de la sine!</p>
+            <a href="/signup-login" class="btn">Alatura-te noua</a>
+
+        </div>
+
+        <div class="home-img">
+            <img src="{{ url_for('static', filename='GYM_Website_Images/4.jpg') }}" alt="home-img">
+        </div>
+
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="heading">Serviciile<Span>Noastre</Span></h2>
+
+        <div class="services-content">
+            <div class="row">
+                <img src="{{ url_for('static', filename='GYM_Website_Images/image1.jpg') }}" alt="">
+                <h4>Physical Fitness</h4>
+            </div>
+
+            <div class="row">
+                <img src="{{ url_for('static', filename='GYM_Website_Images/image2.jpg') }}" alt="">
+
+                <h4>Weight Gain</h4>
+            </div>
+
+            <div class="row">
+                <img src="{{ url_for('static', filename='GYM_Website_Images/image3.jpg') }}" alt="">
+                <h4>Strength Gaining</h4>
+            </div>
+
+            <div class="row">
+                <img src="{{ url_for('static', filename='GYM_Website_Images/image4.jpg') }}" alt="">
+                <h4>Fat Lose</h4>
+            </div>
+
+            <div class="row">
+                <img src="{{ url_for('static', filename='GYM_Website_Images/image5.jpg') }}" alt="">
+                <h4>Weightlifting</h4>
+            </div>
+
+            <div class="row">
+                <img src="{{ url_for('static', filename='GYM_Website_Images/about.jpg') }}" alt="">
+                <h4>Running</h4>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="{{ url_for('static', filename='GYM_Website_Images/about.jpg') }}" alt="">
+        </div>
+        <div class="about-content">
+            <h2 class="heading">De ce sa ne alegi pe noi?</h2>
+            <p> La Royal Fitness, ne dedicăm complet clienților noștri, oferindu-le echipamente de ultimă generație,
+                antrenori certificați 
+            și planuri personalizate adaptate nevoilor fiecăruia. Într-o atmosferă prietenoasă și motivantă, vei
+                găsi suportul de care ai nevoie
+            pentru a-ți atinge obiectivele, fie că este vorba despre slăbire, tonifiere sau creșterea masei
+                musculare. 
+             Alege-ne pentru servicii premium, o comunitate dedicată și rezultate dovedite care îți vor transforma
+                stilul de viață! </p>
+
+            <a href="/signup-login" class="btn">Rezerva o ora gratuita</a>
+        </div>
+    </section>
+
+    <section class="plans" id="plans">
+        <h2 class="heading">Programele<span>Noastre</span></h2>
+
+        <div class="plans-content">
+            <div class="box">
+                <h3>BASIC</h3>
+                <h2><span>100RON/Luna</span></h2>
+                <ul>
+                    <li>Smart Workout Plan</li>
+                    <li>At Home Workout</li>
+                </ul>
+                <a href="/signup-login">
+                    Inscrie-te acum
+                    <i class='bx bx-right-arrow-alt' ></i>
+                </a>
+            </div>
+
+            <div class="box">
+                <h3>PRO</h3>
+                <h2><span>150RON/Luna</span></h2>
+                <ul>
+                    <li>Pro GYMs</li>
+                    <li>Smart Workout Plan</li>
+                    <li>At Home Workout</li>
+                </ul>
+                <a href="/signup-login">
+                    Inscrie-te acum
+                    <i class='bx bx-right-arrow-alt' ></i>
+                </a>
+            </div>
+
+            <div class="box">
+                <h3>PREMIUM</h3>
+                <h2><span>250RON/Luna</span></h2>
+                <ul>
+                    <li>ELITE GYMs and Classes</li>
+                    <li>Pro GYMs</li>
+                    <li>Smart Workout Plan</li>
+                    <li>At Home Workout</li>
+                    <li>Personal Training</li>
+                </ul>
+                <a href="/signup-login">
+                    Inscrie-te acum
+                    <i class='bx bx-right-arrow-alt' ></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="review" id="review">
+        <div class="review-box">
+            <h2 class="heading">Recenzii<span>Clienti</span></h2>
+            <div class="wrapper">
+                <div class="review-item">
+                    <img src="{{ url_for('static', filename='GYM_Website_Images/1.jpg') }}" alt="">
+                    <h2>Mihnea</h2>
+                    <div class="rating">
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                    </div>
+                    <p>
+                        Royal Fitness m-a ajutat să îmi transform complet stilul de viață!
+                         Echipamentele sunt moderne, iar antrenorii sunt mereu alături de tine. Recomand cu toată încrederea!
+                    </p>
+                </div>
+
+                <div class="review-item">
+                    <img src="{{ url_for('static', filename='GYM_Website_Images/2.jpg') }}" alt="">
+                    <h2>Andrei</h2>
+                    <div class="rating">
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                    </div>
+                    <p>
+                        Antrenamentele personalizate și sfaturile nutriționale m-au ajutat să pierd 10 kg într-un mod sănătos. 
+                        Mulțumesc echipei Royal Fitness pentru susținere!                
+                    </p>
+                </div>
+
+                <div class="review-item">
+                    <img src="{{ url_for('static', filename='GYM_Website_Images/3.jpg') }}" alt="">
+                    <h2>Claudiu</h2>
+                    <div class="rating">
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star" ></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                        <i class='bx bxs-star' id="Star"></i>
+                    </div>
+                    <p>
+                        Rezultate garantate! În doar 3 luni, am reușit să îmi tonifiez corpul și să îmi cresc încrederea în mine. 
+                        Royal Fitness este locul unde chiar se întâmplă magia!
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="#"><i class='bx bxl-facebook-circle' ></i></a>
+            <a href="#"><i class='bx bxl-instagram' ></i></a>
+            <a href="#"><i class='bx bxl-youtube' ></i></a>
+        </div>
+
+        <p class="copyright">
+            &copy; Royal Fitness 2025 - All Rights Reserved
+            &copy; Proiect de Bursuc Ioana si Vlad Iulia Ioana
+        </p>
+    
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

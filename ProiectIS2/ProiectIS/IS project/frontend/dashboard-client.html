@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Client Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Royal <span>Fitness</span></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <ul class="navbar">
+            <li><a href="index.html">Acasă</a></li>
+            <li><a href="#subscriptions">Abonamentul meu</a></li>
+            <li><a href="#activities">Activități</a></li>
+            <li><a href="#profile">Profil</a></li>
+        </ul>
+        <div class="top-btn">
+            <a href="/signup-login" class="nav-btn">Delogare</a>
+        </div>
+    </header>
+
+    <section class="dashboard" id="subscriptions">
+        <h2 class="heading">Abonamentul<span>Meu</span></h2>
+        <div class="content">
+            <p>Tip abonament: <strong id="abonament-curent">Lunar</strong></p>
+            <p>Data expirării: <strong>30.12.2025</strong></p>
+            <div>
+                <select id="schimba-abonament">
+                    <option value="basic">Basic</option>
+                    <option value="pro">Pro</option>
+                    <option value="premium">Premium</option>
+                </select>
+                <button onclick="schimbaAbonament()" class="btn">Schimbă Abonament</button>
+            </div>
+            <a href="#" class="btn">Reînnoiește abonamentul</a>
+        </div>
+    </section>
+
+    <section class="dashboard" id="activities">
+        <h2 class="heading">Activitățile<span>Mele</span></h2>
+        <div class="content">
+            <ul>
+                <li>Antrenament personal cu <strong>Andrei</strong> pe 10.12.2025</li>
+                <li>Clase de grup: <strong>HIIT</strong> pe 15.12.2025</li>
+                <li>Consultație nutrițională pe 20.12.2025</li>
+            </ul>
+            <a href="#" class="btn">Adaugă activități</a>
+        </div>
+    </section>
+
+    <section class="dashboard" id="profile">
+        <h2 class="heading">Profilul<span>Meu</span></h2>
+        <div class="content">
+            <p>Nume: <strong>{{ user['username'] }}</strong></p>
+            <p>Email: <strong>{{ user['email'] }}</strong></p>
+            <a href="#" class="btn">Editează profilul</a>
+        </div>
+    </section>
+
+    <section class="dashboard" id="nutritional-plan">
+        <h2 class="heading">Plan<span>Alimentar</span></h2>
+        <div class="content">
+            <select id="obiectiv-nutritie">
+                <option value="slabire">Slăbire</option>
+                <option value="masa_musculara">Masă Musculară</option>
+                <option value="ingrasare">Îngrășare</option>
+                <option value="mentinere">Mențiere</option>
+            </select>
+            <button onclick="genereazaPlanAlimentar()" class="btn">Generează Plan</button>
+            
+            <div id="plan-alimentar-container" style="display:none;">
+                <h3>Plan Alimentar</h3>
+                <p>Calorii zilnice estimate: <span id="calorii-zilnice"></span></p>
+                <div id="plan-detalii"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="dashboard" id="activity-history">
+        <h2 class="heading">Istoricul<span>Activităților</span></h2>
+        <div class="content">
+            <ul id="activity-list">
+                <li>
+                    <strong>Antrenament personal</strong> cu Andrei pe <em>10.12.2025</em>
+                </li>
+                <li>
+                    <strong>Clasă de grup: HIIT</strong> pe <em>15.12.2025</em>
+                </li>
+                <li>
+                    <strong>Consultație nutrițională</strong> pe <em>20.12.2025</em>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="social">
+            <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+        </div>
+        <p>&copy; Royal Fitness 2025 - All Rights Reserved</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
