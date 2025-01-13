@@ -443,6 +443,46 @@ def register():
         conn.close()
 
 
+#pt trainer
+@app.route('/create-nutrition-plan', methods=['POST'])
+def create_nutrition_plan():
+    if 'user_id' not in session:
+        return jsonify({"error": "Utilizator neautentificat!"}), 401
+
+    data = request.json
+    client_id = data['client_id']
+    obiectiv = data['obiectiv']
+    
+    # Preluăm datele clientului din baza de date
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT sex, varsta, greutate, inaltime FROM users WHERE id = %s", (client_id,))
+    client_data = cursor.fetchone()
+    cursor.close()
+    conn.close()
+
+    if not client_data:
+        return jsonify({"error": "Date client indisponibile"}), 404
+
+    plan = genereaza_plan_alimentar(
+        obiectiv, 
+        client_data['sex'], 
+        client_data['varsta'], 
+        client_data['greutate'], 
+        client_data['inaltime']
+    )
+    
+    # Salvează planul alimentar în baza de date, asociat clientului
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO nutrition_plans (client_id, plan) VALUES (%s, %s)", (client_id, json.dumps(plan)))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return jsonify(plan)
+
+
 @app.route('/schimba-abonament', methods=['POST'])
 def schimba_abonament():
     if 'user_id' not in session:
