@@ -443,6 +443,29 @@ def register():
         conn.close()
 
 
+@app.route('/schimba-abonament', methods=['POST'])
+def schimba_abonament():
+    if 'user_id' not in session:
+        return jsonify({"error": "Utilizator neautentificat!"}), 401
+
+    data = request.json
+    abonament_nou = data['abonament']
+
+    # Actualizează abonamentul utilizatorului în baza de date
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET abonament = %s WHERE id = %s", (abonament_nou, session['user_id']))
+    conn.commit()
+
+    # Obține detaliile actualizate ale utilizatorului
+    cursor.execute("SELECT abonament FROM users WHERE id = %s", (session['user_id'],))
+    user_data = cursor.fetchone()
+    cursor.close()
+    conn.close()
+
+    return jsonify({"abonament": user_data['abonament']})
+
+
 # Ruta pentru adăugarea unui client (pentru trainer)
 @app.route('/add-client', methods=['POST'])
 def add_client():
